@@ -1,0 +1,28 @@
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div>
+                <p>Zdravstveni karton</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Redni broj</th>
+                            <th style="text-align: center;">Datum</th>
+                            <th style="text-align: center;">Bolest</th>
+                            <th style="text-align: center;">Ljekar koji je izvrsio pregled</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let a of pregledi; let i = index">
+                        <tr>
+                            <th style="text-align: center;" scope="row">{{i+1}}</th>
+                            <td style="text-align: center;">{{a.medium}}</td>
+                            <td style="text-align: center;">{{a.tipPregleda.ime}}</td>
+                            <td style="text-align: center;">{{a.ljekar.ime}} {{a.ljekar.prezime}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>

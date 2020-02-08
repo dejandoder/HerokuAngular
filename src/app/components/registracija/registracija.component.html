@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div id="divLogin">
+                <p>Registracija novog pacijenta</p>
+                <br>
+                <br>
+                <form method="POST">
+                    <div class="form-group row ">
+                        <div class="col-4">
+                            <label for="ime">Ime:</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" [ngClass]="{
+                                    'is-invalid': validacijaIme 
+                                }" (focus)="validacijaIme =false" placeholder="Unesite ime" [(ngModel)]="korisnik.ime"
+                                [ngModelOptions]="{standalone: true}">
+                            <div class="invalid-feedback" *ngIf="validacijaIme ==true">
+                                Ime mora biti navedeno.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Prezime:</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" placeholder="Unesite prezime"
+                                [(ngModel)]="korisnik.prezime" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                        'is-invalid': validacijaPrezime 
+                                    }" (focus)="validacijaPrezime=false">
+                            <div class="invalid-feedback" *ngIf="validacijaPrezime==true">
+                                Prezime mora biti navedeno.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>E-mail:</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" placeholder="Unesite e-mail"
+                                [(ngModel)]="korisnik.email" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                        'is-invalid': validacijaMail 
+                                    }" (focus)="validacijaMail=false">
+                            <div class="invalid-feedback" *ngIf="validacijaMail==true">
+                                E-mail mora biti naveden.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Adresa:</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" placeholder="Unesite adresu"
+                                [(ngModel)]="korisnik.adresa" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                        'is-invalid': validacijaAdresa 
+                                    }" (focus)="validacijaAdresa=false">
+                            <div class="invalid-feedback" *ngIf="validacijaAdresa==true">
+                                Adresa mora biti navedena.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Grad: </label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" placeholder="Unesite grad"
+                                [(ngModel)]="korisnik.grad" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                        'is-invalid': validacijaGrad 
+                                    }" (focus)="validacijaGrad=false">
+                            <div class="invalid-feedback" *ngIf="validacijaGrad==true">
+                                Grad mora biti naveden.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Država:</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" placeholder="Unesite državu"
+                                [(ngModel)]="korisnik.drzava" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                    'is-invalid': validacijaDrzava 
+                                }" (focus)="validacijaDrzava=false">
+                            <div class="invalid-feedback" *ngIf="validacijaDrzava==true">
+                                Drzava mora biti navedena.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Broj telefona:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="number" class="form-control" placeholder="Unesite broj telefona"
+                                [(ngModel)]="korisnik.brojTelefona" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                    'is-invalid': validacijaBroj
+                                }" (focus)="validacijaBroj=false">
+                            <div class="invalid-feedback" *ngIf="validacijaBroj==true">
+                                Broj telefona mora biti naveden.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label>Jedinstveni broj:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="number" class="form-control" placeholder="Unesite broj"
+                                [(ngModel)]="korisnik.jedinstveniBroj" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                    'is-invalid': validacijaJedinstveni
+                                }" (focus)="validacijaJedinstveni=false">
+                            <div class="invalid-feedback" *ngIf="validacijaJedinstveni==true">
+                                Jedinstveni broj mora biti naveden.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="pwd">Lozinka:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" class="form-control provjeraPrazno" placeholder="Unesite lozinku"
+                                [(ngModel)]="korisnik.password" [ngModelOptions]="{standalone:true}" [ngClass]="{
+                                    'is-invalid': validacijaLozinka
+                                }" (focus)="validacijaLozinka=false">
+                            <div class="invalid-feedback" *ngIf="validacijaLozinka==true">
+                                Nije navedena lozinka
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="pwd">Ponovite lozinku:</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" class="form-control" [(ngModel)]="ponovljenaLozinka"
+                                [ngModelOptions]="{standalone:true}" placeholder="Ponovo unesite lozinku" [ngClass]="{
+                                        'is-invalid': validacijaLozinkaPonovljena
+                                    }" (focus)="validacijaLozinkaPonovljena=false">
+                            <div class="invalid-feedback" *ngIf="validacijaLozinkaPonovljena==true">
+                                Lozinke se ne poklapaju
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <button class="btn btn-primary " (click)="registujSe()">Registruj
+                                se</button>
+                            <button (click)="odustani()" class="btn btn-secondary">Odustani</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

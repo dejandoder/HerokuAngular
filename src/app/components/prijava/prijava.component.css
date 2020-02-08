@@ -1,0 +1,58 @@
+html, body, app-root {
+    height: 100%;
+    margin: 0mm;
+    font-size: 15px;
+    }
+.inventory-body {
+    position: fixed;
+    margin-top: 0cm;
+    min-width: 100%;
+    background-image: url("../pocetna-stranica/klinika.jpg");
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.7;
+    }
+.jumbotron{
+    margin: 2cm;
+    text-align: center;
+    color: rgb(0, 47, 255);
+    font: outline;
+    font-family: 'Montserrat', sans-serif;
+}
+.nav-link{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+button{
+    font-size:15px;
+    margin: 10px;
+    height:40px;
+    width:110px;
+}
+input{
+    width: 500px;
+    font-size: 15px;
+}
+label{
+    width: 450px;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.invalid-feedback{
+    font-size: 15px;
+}
+.toast-error{
+    font-size: 15px;
+}
+
+.toast-body{
+    font-size: 15px;
+}
+

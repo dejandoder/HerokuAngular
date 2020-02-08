@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div id="divLogin">
+                <p>Prijava na sistem</p>
+                <br>
+                <div>
+                    <form method="post">
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label>Korisnicko ime:</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" id="mail" placeholder="Unesite korisnicko ime"
+                                    name="username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"
+                                    [ngClass]="{
+                                        'is-invalid': validacijaKorisnickoIme 
+                                    }" (focus)="validacijaKorisnickoIme=false">
+                                <div class="invalid-feedback" *ngIf="validacijaKorisnickoIme==true">
+                                    Neispravno korisnicko ime.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label for="pwd">Lozinka:</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="password" class="form-control provjeraPrazno" id="lozinka"
+                                    placeholder="Unesite lozinku" [(ngModel)]="user.password"
+                                    [ngModelOptions]="{standalone: true}" [ngClass]="{
+                                        'is-invalid': validacijaLozinka 
+                                    }" (focus)="validacijaLozinka=false">
+                                <div class="invalid-feedback" *ngIf="validacijaLozinka==true">
+                                    Neispravna lozinka.
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+
+                            <div class="col-12">
+                                <button type="submit" (click)="clickLogIn()" class="btn btn-primary ">Uloguj se</button>
+                                <button (click)="odustani()" class="btn btn-secondary">Odustani</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

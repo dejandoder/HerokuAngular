@@ -1,0 +1,38 @@
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div>
+                <p>Lista zakazanih pregleda</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Redni broj</th>
+                            <th style="text-align: center;">Datum i vrijeme pregleda</th>
+                            <th style="text-align: center;">Tip</th>
+                            <th style="text-align: center;">Trajanje</th>
+                            <th style="text-align: center;">Sala</th>
+                            <th style="text-align: center;">Ljekar</th>
+                            <th style="text-align: center;">Klinika</th>
+                            <th style="text-align: center;">Cijena</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let a of pregledi; let i = index">
+                        <tr>
+                            <th style="text-align: center;" scope="row">{{i+1}}</th>
+                            <td style="text-align: center;">{{a.medium}} {{a.vrijeme}}</td>
+                            <td style="text-align: center;">{{a.tipPregleda.ime}}</td>
+                            <td style="text-align: center;">{{a.trajanje}} min</td>
+                            <td style="text-align: center;">{{a.sala}}</td>
+                            <td style="text-align: center;">{{a.ljekar.ime}}</td>
+                            <td style="text-align: center;">{{a.ljekar.klinika.ime}}</td>
+                            <td style="text-align: center;">{{a.tipPregleda.cijena - a.popust}} €</td>
+                            <td style="text-align: center;"><button class="btn btn-link"
+                                    (click)="otkaziPregled(a)">Otkaži pregled</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>

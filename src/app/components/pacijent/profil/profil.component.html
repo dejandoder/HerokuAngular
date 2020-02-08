@@ -1,0 +1,122 @@
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div id="divLogin">
+                <p>Podaci o korisniku</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Ime:</label>
+                            <input class="form-control" placeholder="Unesite ime" name="username"
+                                [(ngModel)]="trenutniKorisnik.ime" [ngModelOptions]="{standalone:true}">
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Prezime:</label>
+
+                            <input class="form-control" placeholder="Unesite prezime"
+                                [(ngModel)]="trenutniKorisnik.prezime" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>E-mail:</label>
+
+                            <input class="form-control" disabled [(ngModel)]="trenutniKorisnik.email"
+                                [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Adresa: </label>
+                            <input class="form-control" placeholder="Unesite adresu"
+                                [(ngModel)]="trenutniKorisnik.adresa" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Grad: </label>
+                            <input class="form-control" placeholder="Unesite grad" [(ngModel)]="trenutniKorisnik.grad"
+                                [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Država:</label>
+                            <input class="form-control" placeholder="Unesite državu"
+                                [(ngModel)]="trenutniKorisnik.drzava" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Broj telefona:</label>
+                            <input class="form-control" id="mail" placeholder="Unesite broj telefona"
+                                [(ngModel)]="trenutniKorisnik.brojTelefona" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Jedinstveni broj:</label>
+                            <input class="form-control" id="mail" placeholder="Unesite broj" disabled
+                                [(ngModel)]="trenutniKorisnik.jedinstveniBroj" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <button type="submit" (click)="izmijeniPodatke()" class="btn btn-primary ">Izmijeni
+                                podatke</button>
+                            <button type="submit" (click)="izmijeniLozinku(lozinkaModal)"
+                                class="btn btn-primary ">Izmijeni
+                                lozinku</button>
+                            <button (click)="odustani()" class="btn btn-secondary">Odustani</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<ng-template #lozinkaModal>
+    <div class="modal-header">
+        <h4 class="modal-title naslov pull-left">Izmjena lozinke</h4>
+    </div>
+    <div class="modal-body d-flex ">
+        <div>
+            <div class="jumbotron2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nova lozinka: </label>
+                            <input class="form-control" [(ngModel)]="novaLozinka" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ponovi novu lozinku: </label>
+                            <input class="form-control" [(ngModel)]="prezimeLjekara"
+                                [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+
+                            <button type="submit" (click)="izmijeniLozinku2()" class="btn btn-primary ">Izmijeni</button>
+                            <button (click)="odustaniOdIzmjene()" class="btn btn-secondary">Odustani</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

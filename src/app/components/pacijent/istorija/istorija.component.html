@@ -1,0 +1,157 @@
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div>
+                <p>Istorija pregleda </p>
+                <table class="table sortable-table" matSort (matSortChange)="sortData($event)">
+                    <thead>
+                        <tr>
+                            <th mat-sort-header="medium">Datum i vrijeme pregleda</th>
+                            <th mat-sort-header="tip">Tip</th>
+                            <th mat-sort-header="trajanje">Trajanje</th>
+                            <th mat-sort-header="sala">Sala</th>
+                            <th mat-sort-header="ljekar">Ljekar</th>
+                            <th mat-sort-header="klinika">Klinika</th>
+                            <th mat-sort-header="cijena">Cijena</th>
+                            <th mat-sort-header="stanje">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let a of sortedData; let i = index">
+                        <tr>
+
+                            <td style="text-align: left;">{{a.medium}}</td>
+                            <td style="text-align: center;">{{a.tipPregleda.ime}}</td>
+                            <td style="text-align: center;">{{a.trajanje}} min</td>
+                            <td style="text-align: center;">{{a.sala}}</td>
+                            <td style="text-align: center;">{{a.ljekar.ime}}</td>
+                            <td style="text-align: center;">{{a.ljekar.klinika.ime}}</td>
+                            <td style="text-align: center;">{{a.tipPregleda.cijena - a.popust}} €</td>
+                            <td style="text-align: center;">{{a.stanje}}</td>
+                            <td style="text-align: center;"><button class="btn btn-link"
+                                    (click)="ocijeniKliniku(ocjKlinika, a)" *ngIf="a.stanje == 'ZAKAZAN'">Ocijeni
+                                    kliniku</button></td>
+                            <td style="text-align: center;"><button class="btn btn-link"
+                                    (click)="ocijeniLjekara(ocjLjekar, a)" *ngIf="a.stanje == 'ZAKAZAN'">Ocijeni
+                                    ljekara</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<ng-template #ocjKlinika>
+    <div class="modal-header">
+        <h4 class="modal-title naslov pull-left">Ocijenjivanje klinike</h4>
+    </div>
+    <div class="modal-body d-flex ">
+        <div>
+            <div class="jumbotron2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Ime klinike</label>
+                                <input class="form-control" [(ngModel)]="imeKlinike"
+                                    [ngModelOptions]="{standalone:true}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Grad</label>
+                                <input class="form-control" [(ngModel)]="gradKlinike"
+                                    [ngModelOptions]="{standalone:true}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Trenutna ocjena</label>
+                                <input class="form-control" [(ngModel)]="ocjenaKlinike"
+                                    [ngModelOptions]="{standalone:true}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">                           
+                                <label>Moja ocjena</label>                           
+                                <select class="form-control" [(ngModel)]="ocjenjenaKlinika" id="ocjenjenaKlinika" name="ocjenjenaKlinika">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button type="submit" (click)="ocijeniK()" class="btn btn-primary ">Ocijeni</button>
+                                <button (click)="odustani()" class="btn btn-secondary">Odustani</button>
+                            </div>
+                        </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #ocjLjekar>
+    <div class="modal-header">
+        <h4 class="modal-title naslov pull-left">Ocijenjivanje ljekara</h4>
+    </div>
+    <div class="modal-body d-flex ">
+        <div>
+            <div class="jumbotron2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ime </label>
+                            <input class="form-control" [(ngModel)]="imeLjekara" [ngModelOptions]="{standalone:true}"
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Prezime</label>
+                            <input class="form-control" [(ngModel)]="prezimeLjekara"
+                                [ngModelOptions]="{standalone:true}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Trenutna ocjena</label>
+                            <input class="form-control" [(ngModel)]="ocjenaLjekara" [ngModelOptions]="{standalone:true}"
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Moja ocjena</label>
+                            <select class="form-control" [(ngModel)]="ocjenjenLjekar" id="ocjenjenLjekar" name="ocjenjenLjekar">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                    <div class="col-md-12">
+                        
+                            <button type="submit" (click)="ocijeniLj()" class="btn btn-primary ">Ocijeni</button>
+                            <button (click)="odustani()" class="btn btn-secondary">Odustani</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

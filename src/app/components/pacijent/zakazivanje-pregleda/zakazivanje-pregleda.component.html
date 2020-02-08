@@ -1,0 +1,181 @@
+<body class="inventory-body">
+    <div class="container">
+        <div class="jumbotron anyClass">
+            <div class="row" style="max-width: 90%; margin: 0 auto; ">
+                <p text-align="center">Zakazivanje pregleda</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Datum pregleda:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i></span>
+                                <input class="form-control" type="date" required="required" [(ngModel)]="datumPregleda">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tip pregleda:</label>
+                            <select class="form-control" [(ngModel)]="pregled">
+                                <option *ngFor="let pregled of sviTipoviPregleda" [ngValue]="pregled">
+                                    {{pregled.ime}}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ocjena klinike:</label>
+                            <input class="form-control" type="number" [(ngModel)]="ocjenaKlinike"
+                                [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="endDestination">Lokacija klinike: </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-map-marker"></i></span>
+                                <input class="form-control" type="text" [(ngModel)]="lokacijaKlinike"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-11">
+                        <button type="button " (click)="pretraziKlinike()" style="margin-left:40%;margin-right:30%;"
+                            class="btn btn-primary">Pretraži
+                            klinike</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <table class="table sortable-table" *ngIf="prikazTabeleKlinike == true">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Ime</th>
+                        <th style="text-align: center;">Opis</th>
+                        <th style="text-align: center;">Lokacija</th>
+                        <th style="text-align: center;">Ocjena</th>
+                        <th style="text-align: center;">Cijena</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let klinika of klinike">
+                    <tr>
+                        <td style="text-align: center;">{{klinika.ime}}</td>
+                        <td style="text-align: center;">{{klinika.opis}}</td>
+                        <td style="text-align: center;">{{klinika.grad}}</td>
+                        <td style="text-align: center;">{{klinika.ocjena}}</td>
+                        <td style="text-align: center;">{{cijena}}</td>
+                        <td style="text-align: center;"><button class="btn btn-link"
+                                (click)="prikaziLjekare(klinika)">Prikaži ljekare</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" *ngIf="prikazTabeleLjekara == true">
+                <h3>Spisak ljekara</h3>
+                <br>
+                <table class="table sortable-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Ime </th>
+                            <th style="text-align: center;">Prezime</th>
+                            <th style="text-align: center;">Ocjena</th>
+                            <th style="text-align: center;">Radno vrijeme</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let ljekar of ljekari">
+                        <tr>
+                            <td style="text-align: center;">{{ljekar.ime}}</td>
+                            <td style="text-align: center;">{{ljekar.prezime}}</td>
+                            <td style="text-align: center;">{{ljekar.ocjena}}</td>
+                            <td style="text-align: center;">{{ljekar.radno_vrijeme_od}} - {{ljekar.radno_vrijeme_do}}
+                            </td>
+                            <td style="text-align: center;"><button class="btn btn-link"
+                                (click)="prikaziTermine(modal, ljekar)">Prikaži termine</button></td>
+            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style="max-width: 90%; margin: 0 auto;" *ngIf="prikazTabeleLjekara == true">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ime </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-text-size"></i></span>
+                                <input class="form-control" type="text" id="imeLjekara"
+                                    [(ngModel)]=" imeLjekaraPretraga" [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Prezime</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-text-size"></i></span>
+                                <input class="form-control" type="text" id="prezimeLjekara"
+                                    [(ngModel)]="prezimeLjekaraPretraga" [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ocjena</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="glyphicon glyphicon-heart"></i></span>
+                                <input class="form-control" type="number" id="ocjenaLjekara" [(ngModel)]="ocjenaLjekara"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-11">
+                        <button type="button " (click)="pretraziLjekare()" style="margin-left:40%;margin-right:30%;"
+                            class="btn btn-primary">Pretraži
+                            Ljekare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<ng-template #modal>
+    <div class="modal-header">
+        <h4 class="modal-title naslov pull-left">Slobodni termini </h4>
+    </div>
+    <div class="modal-body d-flex ">
+        <div>
+            <div class="jumbotron2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Termini</label>
+                            <select class="form-control" [(ngModel)]="terminLj" >
+                                <option *ngFor="let termin of sviTermini" [hidden]="termin.zauzet == true" [ngValue]="termin">
+                                    {{termin.termin}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                    <div class="col-md-12">
+                            <button style="margin: 5px" type="submit" (click)="zakaziPregled()" class="btn btn-primary ">Zakazi pregled</button>          
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
