@@ -143,6 +143,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "IsaFrontEnd"
+    }
+  },
+  "defaultProject": "IsaFrontEnd",
+  "cli": {
+    "analytics": false
+  }
 }
