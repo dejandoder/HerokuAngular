@@ -24,7 +24,7 @@
     "@angular/common": "~8.2.3",
     "@angular/compiler": "~8.2.3",
     "@angular/compiler-cli": "^6.1.10",
-    "@angular/core": "~8.2.3",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.3",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.3",
